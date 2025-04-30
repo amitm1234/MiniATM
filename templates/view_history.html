@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction History</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b); /* New gradient background */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.5s ease; /* Smooth transition effect */
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      transition: padding 0.3s ease; /* Smooth transition */
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 28px;
+      color: #fff;
+    }
+
+    table.transaction-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 30px 0;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: background-color 0.3s ease;
+    }
+
+    table th, table td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ccc;
+      color: #fff;
+      word-wrap: break-word; /* To prevent text from overflowing */
+    }
+
+    table th {
+      background-color: #0072ff;
+    }
+
+    table tr:hover {
+      background-color: rgba(0, 114, 255, 0.2);
+    }
+
+    /* Make the timestamp column wider and more flexible */
+    table td:nth-child(4), table th:nth-child(4) {
+      width: 200px; /* Increased width for timestamp */
+      white-space: nowrap; /* Prevent text wrapping */
+      overflow: hidden;
+      text-overflow: ellipsis; /* Add ellipsis if the text overflows */
+    }
+
+    a {
+      color: #fff;
+      background: #0072ff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      display: inline-block;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    a:hover {
+      background: #005bb5;
+      transform: scale(1.05); /* Slight zoom on hover */
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .creator {
+      font-family: cursive;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Transaction History</h2>
+
+    <!-- Deposits Table -->
+    <h3>Deposits</h3>
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>Account</th>
+          <th>Amount</th>
+          <th>Reason</th>
+          <th>Timestamp</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaction in deposits %}
+        <tr>
+          <td>{{ transaction.account }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.reason }}</td>
+          <td>{{ transaction.timestamp }}</td>
+          <td>{{ transaction.balance }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Withdrawals Table -->
+    <h3>Withdrawals</h3>
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>Account</th>
+          <th>Amount</th>
+          <th>Reason</th>
+          <th>Timestamp</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaction in withdrawals %}
+        <tr>
+          <td>{{ transaction.account }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.reason }}</td>
+          <td>{{ transaction.timestamp }}</td>
+          <td>{{ transaction.balance }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Given Udari Table -->
+    <h3>Given Udari (Loans)</h3>
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>Account</th>
+          <th>Amount</th>
+          <th>Reason</th>
+          <th>Timestamp</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaction in given_udari %}
+        <tr>
+          <td>{{ transaction.account }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.reason }}</td>
+          <td>{{ transaction.timestamp }}</td>
+          <td>{{ transaction.balance }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Taken Udari Table -->
+    <h3>Taken Udari (Loans)</h3>
+    <table class="transaction-table">
+      <thead>
+        <tr>
+          <th>Account</th>
+          <th>Amount</th>
+          <th>Reason</th>
+          <th>Timestamp</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaction in taken_udari %}
+        <tr>
+          <td>{{ transaction.account }}</td>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.reason }}</td>
+          <td>{{ transaction.timestamp }}</td>
+          <td>{{ transaction.balance }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h3>Total Withdrawals: ₹{{ total_withdrawal }}</h3>
+
+    <a href="{{ url_for('account_menu') }}">Back to Account Menu</a>
+  </div>
+
+  <footer>
+    © 2025 <span class="creator">𝒜𝓂𝒾𝓉 ࿐𝓂</span>. All rights reserved.
+  </footer>
+</body>
+</html>

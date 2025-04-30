@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to MiniATM</title>
+  <style>
+    /* Ensure full height */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: #fff;
+    }
+
+    /* Main content takes available space */
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .container h1 {
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #ffffff;
+      color: #0072ff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0072ff;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #eee;
+      font-size: 14px;
+    }
+
+    .creator {
+      font-family: cursive;
+      font-weight: bold;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to MiniATM</h1>
+    <form>
+      <div class="buttons">
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+        <a href="{{ url_for('create_account') }}" class="btn">Create Account</a>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    © 2025 <span class="creator">𝒜𝓂𝒾𝓉 ࿐𝓂</span>. All rights reserved.
+  </footer>
+</body>
+</html>

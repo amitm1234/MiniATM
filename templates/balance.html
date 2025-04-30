@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Check Balance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    h1 {
+      margin: 10px 0;
+      margin-top: 190px;
+      font-size: 28px;
+    }
+
+    .balance-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px 30px;
+      border-radius: 10px;
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    button {
+      background: #fff;
+      color: #0072ff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0072ff;
+      color: #fff;
+    }
+
+    form {
+      margin-bottom: 30px;
+      
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .creator {
+      font-family: cursive;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Your Account Balance</h1>
+
+  <div class="balance-box">
+    Balance: ₹{{ balance }}
+  </div>
+
+  <form action="{{ url_for('account_menu') }}" method="get">
+    <button type="submit">Back to Menu</button>
+  </form>
+
+  <footer>
+    © 2025 <span class="creator">𝒜𝓂𝒾𝓉 ࿐𝓂</span>. All rights reserved.
+  </footer>
+
+</body>
+</html>

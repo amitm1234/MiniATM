@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <table border="1">
+        <tr>
+            <th>Account Number</th>
+            <th>Password</th>
+        </tr>
+        {% for user in users_data %}
+        <tr>
+            <td>{{ user.account_number }}</td>
+            <td>{{ user.password }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+  
+  <footer>
+  © 2025 <span class="creator">𝒜𝓂𝒾𝓉 ࿐𝓂</span>. All rights reserved.
+</footer>
+</body>
+</html>
